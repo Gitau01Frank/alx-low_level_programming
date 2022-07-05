@@ -2,7 +2,11 @@
 
 /**
  * _is alpha - check for alphabetic character
- * @c : character to check
+ *
+ * @c: character to check
+ *
+ * Description: checks for alpha
+ *
  * Return: 0 or 1
  */
 
