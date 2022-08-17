@@ -1,21 +1,28 @@
 #include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
 /**
- * get_nodeint_at_index - function returns the nth node of the linked list
- * @head: pointer to the first node
- * @index: the nth node
- * Return: the nth node
+ *get_nodeint_at_index - gets a node at a certain index
+ *@head:pointer to listint
+ *@index:whose node we will return
+ *Return:pointer to node
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int nth = 0;
+	unsigned int i = 0;
 
-	while (head != NULL)
+	if (head == NULL)
 	{
-		head = head->next;
-		if (index == nth)
+		return (NULL);
+	}
+	while (head)
+	{
+		if (i == index)
+		{
 			return (head);
-
-		nth += 1;
+		}
+		head = head->next;
+		i++;
 	}
 	return (NULL);
 }
