@@ -3,57 +3,31 @@
 #include <math.h>
 #include "main.h"
 /**
- * function that converts a binary number to an unsigned int
- * @b
- *
- * return: the converted number or 0
+ *binary_to_uint - converts a binary number to an unsigned int
+ *@b:pointer to a string containing 1 and 0
+ *Return:converted number or 0,otherwise
  */
-
-int _pow(int x,int y)
-{
-	if(y < 0)
-	{
-		return(-1);
-	}
-	else if (y == 0)
-	{
-		return(1);
-	}
-	else
-	{
-		y--;
-		x = x* _pow(x,y);
-		return(x);
-	}
-	return(0);
-}
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int sum = 0;
-	int i, x, n;
+	int i;
+	unsigned int n = 0;
 
 	if (b == NULL)
-	{
 		return (0);
-	}
-
-	n = strlen(b) - 1;
-	for (x = 0, i = 0; n >= x; n--)
+	i = 0;
+	while (b[i])
 	{
-		switch (b[i])
+		if (b[i] < '0' || b[i] > '1')
+			return (0);
+		i++;
+	}
+	for (i = 0; b[i] != '\0'; i++)
+	{
+		n = n << 1;
+		if (b[i] == '1')
 		{
-			case '1':
-				sum = sum + _pow(2, n);
-				i++;
-				break;
-			case '0':
-				sum = sum + 0;
-				i++;
-				break;
-			default:
-				return (0);
+			n += 1;
 		}
 	}
-
-	return (sum);
+	return (n);
 }
